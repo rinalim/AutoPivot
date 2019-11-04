@@ -25,23 +25,24 @@ def is_running(pname):
     else:
         return False
 
-def update_cfg():
+def update_cfg(sysname):
     global POSITION
+    conf_file = "/opt/retropie/configs/"+sysname+"/retroarch.cfg"
 
-    os.system("sudo sed -i '/allow_video_rotate/d' /opt/retropie/configs/fba/retroarch.cfg")
-    os.system("sudo sed -i '/video_rotation/d' /opt/retropie/configs/fba/retroarch.cfg")
+    os.system("sudo sed -i '/allow_video_rotate/d' " + conf_file)
+    os.system("sudo sed -i '/video_rotation/d' " + conf_file)
 
     if POSITION == 1:
         #print "Vertical mode"
-        os.system("sudo sed -i 's/aspect_ratio_index.*/aspect_ratio_index = \"0\"/g' /opt/retropie/configs/fba/retroarch.cfg")
-        os.system("echo 'allow_video_rotate = \"true\"' >> /opt/retropie/configs/fba/retroarch.cfg")
-        os.system("echo 'video_rotation = \"1\"' >> /opt/retropie/configs/fba/retroarch.cfg")
+        os.system("sudo sed -i 's/aspect_ratio_index.*/aspect_ratio_index = \"0\"/g' " + conf_file)
+        os.system("echo 'allow_video_rotate = \"true\"' >> " + conf_file)
+        os.system("echo 'video_rotation = \"1\"' >> " + conf_file)
         if os.path.isdir('/opt/retropie/configs/all/PauseMode') == True:
             os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_stop_v.png /opt/retropie/configs/all/PauseMode/pause_stop.png")
             os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_resume_v.png /opt/retropie/configs/all/PauseMode/pause_resume.png")
     elif POSITION == 0:
         #print "Horizontal mode"
-        os.system("sudo sed -i 's/aspect_ratio_index.*/aspect_ratio_index = \"22\"/g' /opt/retropie/configs/fba/retroarch.cfg")
+        os.system("sudo sed -i 's/aspect_ratio_index.*/aspect_ratio_index = \"22\"/g' " + conf_file)
         if os.path.isdir('/opt/retropie/configs/all/PauseMode') == True:
             os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_stop_h.png /opt/retropie/configs/all/PauseMode/pause_stop.png")
             os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_resume_h.png /opt/retropie/configs/all/PauseMode/pause_resume.png")
@@ -67,7 +68,7 @@ def alert(ev=None):
         if is_running("emulationstation") == True:
             os.system("killall emulationstation")
         time.sleep(1)
-        update_cfg()
+        update_cfg("fba")
         FORCE_KILL = True
         os.system("sudo cp /opt/retropie/configs/fba/retroarch.cfg /opt/retropie/configs/fba/retroarch_tilt.cfg")
         os.system("sudo sed -i 's/savestate_auto_load.*/savestate_auto_load = \"true\"/g' /opt/retropie/configs/fba/retroarch_tilt.cfg")
