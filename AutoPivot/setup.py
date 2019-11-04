@@ -7,7 +7,7 @@ os.system("sudo sed -i 's/channel = .*/channel = " + channel + "/g' /opt/retropi
 
 if os.path.isdir('/opt/retropie/configs/all/PauseMode') == True:
     print "PauseMode detected"
-    os.system("echo '/opt/retropie/configs/all/PauseMode/PauseMode /dev/input/js0 10 11 0 &' >> /opt/retropie/configs/all/AutoPivot/onstart.sh")
+    os.system("cat /opt/retropie/configs/all/runcommand-onstart.sh | grep PauseMode >> /opt/retropie/configs/all/AutoPivot/onstart.sh")
     os.system("echo 'sudo killall pngpause' >> /opt/retropie/configs/all/AutoPivot/onend.sh")
     os.system("echo 'sudo killall pngbg' >> /opt/retropie/configs/all/AutoPivot/onend.sh")
     os.system("echo 'sudo killall PauseMode' >> /opt/retropie/configs/all/AutoPivot/onend.sh")
