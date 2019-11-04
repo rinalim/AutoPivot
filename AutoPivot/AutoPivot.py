@@ -27,17 +27,24 @@ def is_running(pname):
 def update_cfg():
     global POSITION
 
-    run_cmd("sudo sed -i '/allow_video_rotate/d' /opt/retropie/configs/fba/retroarch.cfg")
-    run_cmd("sudo sed -i '/video_rotation/d' /opt/retropie/configs/fba/retroarch.cfg")
+    os.system("sudo sed -i '/allow_video_rotate/d' /opt/retropie/configs/fba/retroarch.cfg")
+    os.system("sudo sed -i '/video_rotation/d' /opt/retropie/configs/fba/retroarch.cfg")
 
     if POSITION == 1:
         #print "Vertical mode"
-        run_cmd("sudo sed -i 's/aspect_ratio_index.*/aspect_ratio_index = \"0\"/g' /opt/retropie/configs/fba/retroarch.cfg")
-        run_cmd("echo 'allow_video_rotate = \"true\"' >> /opt/retropie/configs/fba/retroarch.cfg")
-        run_cmd("echo 'video_rotation = \"1\"' >> /opt/retropie/configs/fba/retroarch.cfg")
+        os.system("sudo sed -i 's/aspect_ratio_index.*/aspect_ratio_index = \"0\"/g' /opt/retropie/configs/fba/retroarch.cfg")
+        os.system("echo 'allow_video_rotate = \"true\"' >> /opt/retropie/configs/fba/retroarch.cfg")
+        os.system("echo 'video_rotation = \"1\"' >> /opt/retropie/configs/fba/retroarch.cfg")
+        if os.path.isdir('/opt/retropie/configs/all/PauseMode') == True:
+            os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_stop_v.png /opt/retropie/configs/all/PauseMode/pause_stop.png")
+            os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_resume_v.png /opt/retropie/configs/all/PauseMode/pause_resume.png")
     elif POSITION == 0:
         #print "Horizontal mode"
-        run_cmd("sudo sed -i 's/aspect_ratio_index.*/aspect_ratio_index = \"22\"/g' /opt/retropie/configs/fba/retroarch.cfg")
+        os.system("sudo sed -i 's/aspect_ratio_index.*/aspect_ratio_index = \"22\"/g' /opt/retropie/configs/fba/retroarch.cfg")
+        if os.path.isdir('/opt/retropie/configs/all/PauseMode') == True:
+            os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_stop_h.png /opt/retropie/configs/all/PauseMode/pause_stop.png")
+            os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_resume_h.png /opt/retropie/configs/all/PauseMode/pause_resume.png")
+
 
 def alert(ev=None):
     #print("event detected")
@@ -86,15 +93,15 @@ def loop():
             #print "Vertical mode"
             RESTART = False
             update_cfg()
-            run_cmd("clear > /dev/tty1")
+            os.system("clear > /dev/tty1")
             #run_cmd(ES_CMD + " --screenrotate 3 > /dev/null 2>&1")
-            run_cmd(ES_CMD + " --screenrotate 3 --screensize 1024 1024 --screenoffset 0 100 > /dev/null 2>&1")
+            os.system(ES_CMD + " --screenrotate 3 --screensize 1024 1024 --screenoffset 0 100 > /dev/null 2>&1")
         elif POSITION == 0 and RESTART == True:
             #print "Horizontal mode"
             RESTART = False
             update_cfg()
-            run_cmd("clear > /dev/tty1")
-            run_cmd(ES_CMD + " > /dev/null 2>&1")
+            os.system("clear > /dev/tty1")
+            os.system(ES_CMD + " > /dev/null 2>&1")
         else:
             time.sleep(1)
             if is_running("bin/retroarch") == False:
