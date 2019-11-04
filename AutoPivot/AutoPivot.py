@@ -108,8 +108,6 @@ def loop():
             time.sleep(1)
             if is_running("bin/retroarch") == False:
                 time.sleep(2)
-                ps_grep = run_cmd("ps -ef | grep  grep -v grep")
-                ps_grep_es = run_cmd("ps -ef | grep | grep -v grep")
                 if is_running("bin/retroarch") == False and is_running("emulationstation") == False:
                     if FORCE_KILL == True:
                         RESTART = True
