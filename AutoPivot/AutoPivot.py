@@ -70,7 +70,7 @@ def alert(ev=None):
             os.system("killall emulationstation")
         time.sleep(1)
         FORCE_KILL = True
-        sysname = command.split(" ")[4].split("/")[3]
+        sysname = command.split(" ")[4].split("/")[4]
         update_cfg(sysname)
         conf_file = "/opt/retropie/configs/"+sysname+"/retroarch.cfg"
         conf_flle_tilt = "/opt/retropie/configs/"+sysname+"/retroarch_tilt.cfg"
