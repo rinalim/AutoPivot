@@ -13,5 +13,5 @@ if os.path.isdir('/opt/retropie/configs/all/PauseMode') == True:
     os.system("echo 'sudo killall PauseMode' >> /opt/retropie/configs/all/AutoPivot/onend.sh")
     os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_stop.png /opt/retropie/configs/all/PauseMode/pause_stop_h.png")
     os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_resume.png /opt/retropie/configs/all/PauseMode/pause_resume_h.png")
-    os.system('sudo convert -rotate "90" /opt/retropie/configs/all/PauseMode/pause_stop.png /opt/retropie/configs/all/PauseMode/pause_stop_v.png')
-    os.system('sudo convert -rotate "90" /opt/retropie/configs/all/PauseMode/pause_resume.png /opt/retropie/configs/all/PauseMode/pause_resume_v.png')
+    os.system('sudo convert -rotate "270" /opt/retropie/configs/all/PauseMode/pause_stop.png /opt/retropie/configs/all/PauseMode/pause_stop_v.png')
+    os.system('sudo convert -rotate "270" /opt/retropie/configs/all/PauseMode/pause_resume.png /opt/retropie/configs/all/PauseMode/pause_resume_v.png')
