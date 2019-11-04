@@ -73,7 +73,7 @@ def alert(ev=None):
         sysname = command.split(" ")[4].split("/")[3]
         update_cfg(sysname)
         conf_file = "/opt/retropie/configs/"+sysname+"/retroarch.cfg"
-        conf_flle_tilt = "/opt/retropie/configs/"+sysname+"/retroarch_tilt.cfg")
+        conf_flle_tilt = "/opt/retropie/configs/"+sysname+"/retroarch_tilt.cfg"
         os.system("sudo cp " + conf_file + " " + conf_flle_tilt)
         os.system("sudo sed -i 's/savestate_auto_load.*/savestate_auto_load = \"true\"/g' " + conf_flle_tilt)
         command = command.replace(conf_file, conf_flle_tilt)
