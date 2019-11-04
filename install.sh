@@ -7,7 +7,7 @@ sudo chmod 755 /opt/retropie/configs/all/AutoPivot/*sh
 sudo sed -i '/AutoPivot.py/d' /opt/retropie/configs/all/autostart.sh
 sudo sed -i '/emulationstation/d' /opt/retropie/configs/all/autostart.sh
 echo '#LANG=ko_KR.UTF-8 emulationstation #auto' >> /opt/retropie/configs/all/autostart.sh
-echo '/opt/retropie/configs/all/AutoPivot/AutoPivot.py' >> /opt/retropie/configs/all/autostart.sh
+echo '/usr/bin/python /opt/retropie/configs/all/AutoPivot/AutoPivot.py' >> /opt/retropie/configs/all/autostart.sh
 
 python ./AutoPivot/setup.py
 
