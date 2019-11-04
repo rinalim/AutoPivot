@@ -65,6 +65,7 @@ def alert(ev=None):
         command = run_cmd("cat /proc/"+pid+"/cmdline").replace('\0', ' ')
         os.system("sudo cp /dev/shm/runcommand.log /tmp/runcommand-ingame.log")
         os.system("killall retroarch")
+        os.system("/opt/retropie/configs/all/AutoPivot/onend.sh")
         if is_running("emulationstation") == True:
             os.system("killall emulationstation")
         time.sleep(1)
@@ -78,6 +79,7 @@ def alert(ev=None):
         command = command.replace(conf_file, conf_flle_tilt)
         os.system("sudo cat /tmp/runcommand-ingame.log > /dev/shm/runcommand.log")
         #print command
+        os.system("/opt/retropie/configs/all/AutoPivot/onend.sh")
         os.system(command+" &")
     else:
         RESTART = True
