@@ -8,6 +8,8 @@ sudo sed -i '/AutoPivot.py/d' /opt/retropie/configs/all/autostart.sh
 sudo sed -i 's/emulationstation.*/#emulationstation #auto/g' /opt/retropie/configs/all/autostart.sh
 echo '/opt/retropie/configs/all/AutoPivot/AutoPivot.py' >> /opt/retropie/configs/all/autostart.sh
 
+python ./AutoPivot/setup.py
+
 echo
 echo "Setup Completed. Reboot after 3 Seconds."
 sleep 3
