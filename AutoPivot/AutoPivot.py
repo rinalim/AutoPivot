@@ -71,9 +71,10 @@ def alert(ev=None):
         update_cfg("fba")
         FORCE_KILL = True
         conf_file = command.split(" ")[4]
-        os.system("sudo cp " + conf_file + " " + conf_file.replace("/retroarch.cfg", "/retroarch_tilt.cfg")
-        os.system("sudo sed -i 's/savestate_auto_load.*/savestate_auto_load = \"true\"/g' /opt/retropie/configs/fba/retroarch_tilt.cfg")
-        command = command.replace("/retroarch.cfg", "/retroarch_tilt.cfg")
+        conf_flle_tilt = conf_file.replace("/retroarch.cfg", "/retroarch_tilt.cfg")
+        os.system("sudo cp " + conf_file + " " + conf_flle_tilt)
+        os.system("sudo sed -i 's/savestate_auto_load.*/savestate_auto_load = \"true\"/g' " + conf_flle_tilt)
+        command = command.replace(conf_file, conf_flle_tilt)
         os.system("sudo cat /tmp/runcommand-ingame.log > /dev/shm/runcommand.log")
         #print command
         os.system(command+" &")
