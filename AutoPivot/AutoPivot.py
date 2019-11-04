@@ -68,10 +68,11 @@ def alert(ev=None):
         if is_running("emulationstation") == True:
             os.system("killall emulationstation")
         time.sleep(1)
-        update_cfg("fba")
         FORCE_KILL = True
-        conf_file = command.split(" ")[4]
-        conf_flle_tilt = conf_file.replace("/retroarch.cfg", "/retroarch_tilt.cfg")
+        sysname = command.split(" ")[4].split("/")[3]
+        update_cfg(sysname)
+        conf_file = "/opt/retropie/configs/"+sysname+"/retroarch.cfg"
+        conf_flle_tilt = "/opt/retropie/configs/"+sysname+"/retroarch_tilt.cfg")
         os.system("sudo cp " + conf_file + " " + conf_flle_tilt)
         os.system("sudo sed -i 's/savestate_auto_load.*/savestate_auto_load = \"true\"/g' " + conf_flle_tilt)
         command = command.replace(conf_file, conf_flle_tilt)
