@@ -3,7 +3,7 @@
 import sys, os, time
 
 channel = input('Pin number: ')
-os.system("sudo sed -i 's/channel = .*/channel = " + channel + "/g' /opt/retropie/configs/all/AutoPivot/AutoPivot.py")
+os.system("sudo sed -i 's/channel = .*/channel = " + str(channel) + "/g' /opt/retropie/configs/all/AutoPivot/AutoPivot.py")
 
 if os.path.isdir('/opt/retropie/configs/all/PauseMode') == True:
     print "PauseMode detected"
