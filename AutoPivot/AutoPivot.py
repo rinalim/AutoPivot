@@ -79,7 +79,7 @@ def alert(ev=None):
         command = command.replace(conf_file, conf_flle_tilt)
         os.system("sudo cat /tmp/runcommand-ingame.log > /dev/shm/runcommand.log")
         #print command
-        os.system("/opt/retropie/configs/all/AutoPivot/onend.sh")
+        os.system("/opt/retropie/configs/all/AutoPivot/onstart.sh")
         os.system(command+" &")
     else:
         RESTART = True
