@@ -45,7 +45,6 @@ def update_cfg():
             os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_stop_h.png /opt/retropie/configs/all/PauseMode/pause_stop.png")
             os.system("sudo cp /opt/retropie/configs/all/PauseMode/pause_resume_h.png /opt/retropie/configs/all/PauseMode/pause_resume.png")
 
-
 def alert(ev=None):
     #print("event detected")
     global RESTART
