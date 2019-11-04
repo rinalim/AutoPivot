@@ -6,7 +6,8 @@ channel = 14
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(channel, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-ES_CMD = "LANG=ko_KR.UTF-8 /home/pi/dev/customES/emulationstation.sh 2"
+ES_CMD = "LANG=ko_KR.UTF-8 emulationstation #auto"
+#ES_CMD = "LANG=ko_KR.UTF-8 /home/pi/dev/customES/emulationstation.sh 2"
 RESTART = True
 POSITION = -1
 FORCE_KILL = False
