@@ -70,9 +70,10 @@ def alert(ev=None):
         time.sleep(1)
         update_cfg("fba")
         FORCE_KILL = True
-        os.system("sudo cp /opt/retropie/configs/fba/retroarch.cfg /opt/retropie/configs/fba/retroarch_tilt.cfg")
+        conf_file = command.split(" ")[4]
+        os.system("sudo cp " + conf_file + " " + conf_file.replace("/retroarch.cfg", "/retroarch_tilt.cfg")
         os.system("sudo sed -i 's/savestate_auto_load.*/savestate_auto_load = \"true\"/g' /opt/retropie/configs/fba/retroarch_tilt.cfg")
-        command = command.replace("fba/retroarch.cfg", "fba/retroarch_tilt.cfg")
+        command = command.replace("/retroarch.cfg", "/retroarch_tilt.cfg")
         os.system("sudo cat /tmp/runcommand-ingame.log > /dev/shm/runcommand.log")
         #print command
         os.system(command+" &")
@@ -93,14 +94,14 @@ def loop():
         if POSITION == 1 and RESTART == True:
             #print "Vertical mode"
             RESTART = False
-            update_cfg()
+            update_cfg("fba")
             os.system("clear > /dev/tty1")
-            #run_cmd(ES_CMD + " --screenrotate 3 > /dev/null 2>&1")
-            os.system(ES_CMD + " --screenrotate 3 --screensize 1024 1024 --screenoffset 0 100 > /dev/null 2>&1")
+            os.system(ES_CMD + " --screenrotate 3 > /dev/null 2>&1")
+            #os.system(ES_CMD + " --screenrotate 3 --screensize 1024 1024 --screenoffset 0 100 > /dev/null 2>&1")
         elif POSITION == 0 and RESTART == True:
             #print "Horizontal mode"
             RESTART = False
-            update_cfg()
+            update_cfg("fba")
             os.system("clear > /dev/tty1")
             os.system(ES_CMD + " > /dev/null 2>&1")
         else:
