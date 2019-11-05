@@ -116,7 +116,7 @@ def loop():
                     if FORCE_KILL == True:
                         RESTART = True
                         FORCE_KILL = False
-                        os.system("sudo cat /home/pi/tilt/rasminipi.log > /dev/shm/runcommand.log")
+                        os.system("sudo cat /opt/retropie/configs/all/AutoPivot/rasminipi.log > /dev/shm/runcommand.log")
                         continue
                     else:
                         break
