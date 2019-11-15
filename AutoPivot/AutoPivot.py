@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import time, sys, os, keyboard
+import time, sys, os
 from subprocess import *
 
 channel = 14
