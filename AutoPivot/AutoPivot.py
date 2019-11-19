@@ -57,8 +57,8 @@ def alert(ev=None):
     read = GPIO.input(channel)
     if read == POSITION:
         return
-    os.system("echo "+ str(read) + " > /tmp/AutoPivot.log")
     POSITION = read
+    os.system("echo "+ str(POSITION) + " > /tmp/AutoPivot.log")
     if is_running("bin/retroarch") == True:
         #print 'in game'
         RESTART = False
@@ -92,6 +92,7 @@ def loop():
     global POSITION
     global FORCE_KILL
     POSITION = GPIO.input(channel)
+    os.system("echo "+ str(POSITION) + " > /tmp/AutoPivot.log")
     GPIO.add_event_detect(channel, GPIO.BOTH, callback=alert, bouncetime=100)
     while True:
         #read = GPIO.input(channel)
