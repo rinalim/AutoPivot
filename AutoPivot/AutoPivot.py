@@ -57,6 +57,7 @@ def alert(ev=None):
     read = GPIO.input(channel)
     if read == POSITION:
         return
+    os.system("echo "+ str(read) + " > /tmp/AutoPivot.log")
     POSITION = read
     if is_running("bin/retroarch") == True:
         #print 'in game'
