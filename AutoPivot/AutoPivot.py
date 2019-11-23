@@ -77,10 +77,13 @@ def alert(ev=None):
         conf_flle_tilt = "/opt/retropie/configs/"+sysname+"/retroarch_tilt.cfg"
         os.system("sudo cp " + conf_file + " " + conf_flle_tilt)
         os.system("sudo sed -i 's/savestate_auto_load.*/savestate_auto_load = \"true\"/g' " + conf_flle_tilt)
+        '''
         game_conf = run_cmd("ps -ef | grep emulators | grep -v grep | awk '{print $13}'").rstrip()+".cfg"
         if os.path.isfile(game_conf) == True:
             os.system("cat " + game_conf + " >> " + conf_flle_tilt)
         command = command.replace(conf_file, conf_flle_tilt).split("|")[0]
+        '''
+        command = command.replace(conf_file, conf_flle_tilt)
         os.system("sudo cat /tmp/runcommand-ingame.log > /dev/shm/runcommand.log")
         print command
         os.system("/opt/retropie/configs/all/AutoPivot/onstart.sh")
