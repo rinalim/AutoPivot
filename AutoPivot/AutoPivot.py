@@ -88,6 +88,7 @@ def alert(ev=None):
         print command
         os.system("/opt/retropie/configs/all/AutoPivot/onstart.sh")
         os.system(command+" &")
+        os.system("clear > /dev/tty1")
     else:
         RESTART = True
         FORCE_KILL = False
