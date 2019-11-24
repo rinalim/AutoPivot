@@ -109,14 +109,14 @@ def loop():
             RESTART = False
             update_cfg("fba")
             os.system("clear > /dev/tty1")
-            os.system(ES_CMD + " --screenrotate 3 > /dev/null 2>&1")
+            os.system(ES_CMD + " --screenrotate 3")
             #os.system(ES_CMD + " --screenrotate 3 --screensize 1024 1024 --screenoffset 0 100 > /dev/null 2>&1")
         elif POSITION == 0 and RESTART == True:
             #print "Horizontal mode"
             RESTART = False
             update_cfg("fba")
             os.system("clear > /dev/tty1")
-            os.system(ES_CMD + " > /dev/null 2>&1")
+            os.system(ES_CMD)
         else:
             time.sleep(1)
             if is_running("bin/retroarch") == False:
